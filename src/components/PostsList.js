@@ -13,7 +13,7 @@ class PostsList extends Component {
     renderPosts() {
         let render = [];
         for (var i = 0; i < 10; i++) {
-            render.push(<Post />);
+            render.push(<Post key={i} />);
         }
 
         return render;
