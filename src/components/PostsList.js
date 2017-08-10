@@ -12,11 +12,10 @@ const styles = {
 class PostsList extends Component {
     renderPosts() {
         let render = [];
-        for (var i = 0; i < 10; i++) {
-            render.push(<Post key={i} />);
-        }
-
-        return render;
+        this.props.posts.forEach((post, index) => {
+            render.push(<Post key={index} post={post} />);
+        });
+        return render.reverse();
     }
 
     render() {

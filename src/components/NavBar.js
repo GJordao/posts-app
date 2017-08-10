@@ -32,7 +32,7 @@ const NavBar = props => {
         <div style={styles.navBar}>
             <span style={styles.title}>posts-app</span>
             <span>
-                <img style={styles.icon} src={require("./../images/ios7-plus-empty.png")} {...props}  />
+                <img style={styles.icon} src={require("./../images/ios7-plus-empty.png")} {...props} alt="New post"  />
             </span>
         </div>
     );

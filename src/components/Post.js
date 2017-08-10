@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 
-const contentText = `
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet nisl vulputate, scelerisque enim sed, suscipit nibh. Praesent ullamcorper elit erat, quis vehicula metus condimentum in. Proin pharetra quam euismod, pellentesque elit bibendum, imperdiet ipsum. Sed vehicula sit amet nisi ac euismod. Donec efficitur diam quis mauris aliquet vulputate. Mauris pretium leo dui, eget varius purus maximus a. Sed euismod pulvinar eleifend. Vestibulum consequat volutpat est, vel pulvinar justo gravida pulvinar. Suspendisse quis feugiat dolor. Nullam suscipit ac elit sit amet egestas. Maecenas egestas viverra nulla.`;
-
 const styles = {
     container: {
         backgroundColor: "#fff7ea",
@@ -20,6 +17,7 @@ const styles = {
         borderColor: "transparent",
         fontSize: 18,
         height: 125,
+        outline: "none",
         overflowY: "scroll",
         paddingLeft: 15,
         resize: "none",
@@ -56,6 +54,7 @@ const styles = {
         color: "#587cb7",
         fontSize: 30,
         height: 40,
+        outline: "none",
         padding: 5,
         paddingLeft: 15,
         width: 550
@@ -87,7 +86,7 @@ class Post extends Component {
                         disabled={this.state.disabled}
                         style={styles.title}
                         type="text"
-                        defaultValue={"Title"}
+                        defaultValue={this.props.post.title}
                     />
                     <img
                         onClick={this.toggleDisabled}
@@ -103,11 +102,11 @@ class Post extends Component {
                 <textarea
                     disabled={this.state.disabled}
                     style={styles.content}
-                    defaultValue={contentText}
+                    defaultValue={this.props.post.content}
                 />
                 <div style={styles.footer}>
-                    <span style={styles.footerName}>Name</span>
-                    <span style={styles.footerDate}>posted at Date/Time</span>
+                    <span style={styles.footerName}>{this.props.post.name}</span>
+                    <span style={styles.footerDate}>posted at {this.props.post.date.toString()}</span>
                 </div>
             </div>
         );

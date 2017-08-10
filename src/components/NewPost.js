@@ -75,8 +75,41 @@ const styles = {
 };
 
 class NewPost extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: "",
+            content: "",
+            name: ""
+        };
+    }
+
     handlePost = e => {
         e.preventDefault();
+        this.props.addNewPost({
+            title: this.state.title,
+            content: this.state.content,
+            name: this.state.name,
+            date: new Date()
+        });
+        this.props.toggleAddPost();
+        this.setState({
+            title: "",
+            content: "",
+            name: ""
+        });
+    };
+
+    handleTitleChange = event => {
+        this.setState({ title: event.target.value });
+    };
+
+    handleContentChange = event => {
+        this.setState({ content: event.target.value });
+    };
+
+    handleNameChange = event => {
+        this.setState({ name: event.target.value });
     };
 
     render() {
@@ -90,14 +123,18 @@ class NewPost extends Component {
                     <input
                         style={styles.title}
                         placeholder="Title"
+                        value={this.state.title}
                         type="text"
+                        onChange={this.handleTitleChange}
                         required
                     />
                 </div>
                 <div style={styles.contentContainer}>
                     <textarea
+                        value={this.state.content}                    
                         placeholder="What's happening?"
                         style={styles.content}
+                        onChange={this.handleContentChange}
                         required
                     />
                 </div>
@@ -105,7 +142,9 @@ class NewPost extends Component {
                     <input
                         style={styles.name}
                         placeholder="Name"
+                        value={this.state.name}                        
                         type="text"
+                        onChange={this.handleNameChange}
                         required
                     />
                 </span>
