@@ -2,14 +2,14 @@
 import React, { Component } from "react";
 // Components
 import NavBar from "./components/NavBar";
-import Post from "./components/Post";
+import PostsList from "./components/PostsList";
 
 class App extends Component {
     render() {
         return (
             <div>
                 <NavBar />
-                <Post />
+                <PostsList />
             </div>
         );
     }

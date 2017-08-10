@@ -11,8 +11,8 @@ const styles = {
         borderRadius: 5,
         cursor: "pointer",
         height: 200,
-        marginLeft: 200,
-        marginTop: 200,
+        margin: "auto",
+        marginTop: 50,
         position: "relative",
         width: 600
     },

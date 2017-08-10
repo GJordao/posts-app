@@ -9,7 +9,8 @@ const styles = {
         height: 70,
         position: "fixed",
         top: 0,
-        width: "100%"
+        width: "100%",
+        zIndex: 100
     },
     title: {
         fontSize: 22,
@@ -20,7 +21,7 @@ const styles = {
 const NavBar = props => {
     return (
         <div style={styles.navBar}>
-            <div style={styles.title}>post-app</div>
+            <div style={styles.title}>posts-app</div>
         </div>
     );
 };
