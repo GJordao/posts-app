@@ -120,7 +120,7 @@ class Post extends Component {
                         {this.props.post.name}
                     </span>
                     <span style={styles.footerDate}>
-                        posted at {this.props.post.date.toString()}
+                        posted at {this.props.post.datePosted}
                     </span>
                 </div>
             </div>

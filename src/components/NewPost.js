@@ -96,7 +96,7 @@ class NewPost extends Component {
             title: this.state.title,
             content: this.state.content,
             name: this.state.name,
-            date: new Date()
+            date: new Date().toString()
         });
         this.props.hideNewPost();
         this.setState({

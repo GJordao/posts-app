@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 // React-Redux
 import { connect } from "react-redux";
+// Action creators
+import { userFetchPosts } from "./../actions/api";
 // Components
 import Post from "./Post";
 
@@ -13,6 +15,10 @@ const styles = {
 };
 
 class PostsList extends Component {
+    componentDidMount() {
+        this.props.userFetchPosts();
+    }
+
     renderPosts() {
         let render = [];
         this.props.posts.list.forEach((post, index) => {
@@ -43,4 +49,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(PostsList);
+export default connect(mapStateToProps, { userFetchPosts })(PostsList);
