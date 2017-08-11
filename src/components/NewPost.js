@@ -1,4 +1,9 @@
+// React
 import React, { Component } from "react";
+// React-Redux
+import { connect } from "react-redux";
+// Action creators
+import { hideNewPost } from "./../actions/newPost";
 
 const styles = {
     container: {
@@ -92,7 +97,7 @@ class NewPost extends Component {
             name: this.state.name,
             date: new Date()
         });
-        this.props.toggleAddPost();
+        this.props.hideNewPost();
         this.setState({
             title: "",
             content: "",
@@ -116,7 +121,7 @@ class NewPost extends Component {
         return (
             <form
                 style={styles.container}
-                hidden={this.props.isHidden}
+                hidden={this.props.hidden}
                 onSubmit={this.handlePost}
             >
                 <div style={styles.titleContainer}>
@@ -131,7 +136,7 @@ class NewPost extends Component {
                 </div>
                 <div style={styles.contentContainer}>
                     <textarea
-                        value={this.state.content}                    
+                        value={this.state.content}
                         placeholder="What's happening?"
                         style={styles.content}
                         onChange={this.handleContentChange}
@@ -142,7 +147,7 @@ class NewPost extends Component {
                     <input
                         style={styles.name}
                         placeholder="Name"
-                        value={this.state.name}                        
+                        value={this.state.name}
                         type="text"
                         onChange={this.handleNameChange}
                         required
@@ -154,4 +159,10 @@ class NewPost extends Component {
     }
 }
 
-export default NewPost;
+const mapStateToProps = state => {
+    return {
+        hidden: state.newPost.hidden
+    };
+};
+
+export default connect(mapStateToProps, { hideNewPost })(NewPost);

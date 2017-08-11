@@ -9,16 +9,9 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isHidden: true,
             posts: []
         };
     }
-
-    toggleAddPost = () => {
-        this.setState({
-            isHidden: !this.state.isHidden
-        });
-    };
 
     addNewPost = post => {
         let newPosts = this.state.posts.slice();
@@ -36,12 +29,11 @@ class App extends Component {
         return (
             <div>
                 <NavBar onClick={this.toggleAddPost} />
-                <NewPost
-                    isHidden={this.state.isHidden}
-                    addNewPost={this.addNewPost}
-                    toggleAddPost={this.toggleAddPost}
+                <NewPost addNewPost={this.addNewPost} />
+                <PostsList
+                    posts={this.state.posts}
+                    removePost={this.removePost}
                 />
-                <PostsList posts={this.state.posts} removePost={this.removePost} />
             </div>
         );
     }

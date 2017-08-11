@@ -1,4 +1,9 @@
+// React
 import React from "react";
+// React-Redux
+import { connect } from "react-redux";
+// Actions creators
+import { hideNewPost, showNewPost } from "./../actions/newPost";
 
 const styles = {
     icon: {
@@ -23,7 +28,7 @@ const styles = {
     title: {
         fontSize: 22,
         padding: 20,
-        position: "absolute",
+        position: "absolute"
     }
 };
 
@@ -32,10 +37,23 @@ const NavBar = props => {
         <div style={styles.navBar}>
             <span style={styles.title}>posts-app</span>
             <span>
-                <img style={styles.icon} src={require("./../images/ios7-plus-empty.png")} {...props} alt="New post"  />
+                <img
+                    style={styles.icon}
+                    src={require("./../images/ios7-plus-empty.png")}
+                    onClick={
+                        props.hidden ? props.showNewPost : props.hideNewPost
+                    }
+                    alt="New post"
+                />
             </span>
         </div>
     );
 };
 
-export default NavBar;
+const mapStateToProps = state => {
+    return {
+        hidden: state.newPost.hidden
+    };
+};
+
+export default connect(mapStateToProps, { hideNewPost, showNewPost })(NavBar);
