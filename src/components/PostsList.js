@@ -1,4 +1,7 @@
+// React
 import React, { Component } from "react";
+// React-Redux
+import { connect } from "react-redux";
 // Components
 import Post from "./Post";
 
@@ -12,7 +15,7 @@ const styles = {
 class PostsList extends Component {
     renderPosts() {
         let render = [];
-        this.props.posts.forEach((post, index) => {
+        this.props.posts.list.forEach((post, index) => {
             render.push(
                 <Post
                     key={index}
@@ -34,4 +37,10 @@ class PostsList extends Component {
     }
 }
 
-export default PostsList;
+const mapStateToProps = state => {
+    return {
+        posts: state.posts
+    };
+};
+
+export default connect(mapStateToProps)(PostsList);

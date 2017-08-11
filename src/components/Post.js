@@ -1,4 +1,9 @@
+// React
 import React, { Component } from "react";
+// React-Redux
+import { connect } from "react-redux";
+// Action creators
+import { removePost } from "./../actions/posts";
 
 const styles = {
     container: {
@@ -78,10 +83,6 @@ class Post extends Component {
         });
     };
 
-    removePost = () => {
-        this.props.removePost(this.props.index);
-    }
-
     render() {
         return (
             <div style={styles.container}>
@@ -103,7 +104,7 @@ class Post extends Component {
                         style={styles.icon}
                     />
                     <img
-                        onClick={this.removePost}
+                        onClick={() => this.props.removePost(this.props.index)}
                         alt={"Remove"}
                         src={require("./../images/ios7-close-empty.png")}
                         style={styles.icon}
@@ -127,4 +128,4 @@ class Post extends Component {
     }
 }
 
-export default Post;
+export default connect(null, { removePost })(Post);

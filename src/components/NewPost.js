@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // Action creators
 import { hideNewPost } from "./../actions/newPost";
+import { addPost } from "./../actions/posts";
 
 const styles = {
     container: {
@@ -91,7 +92,7 @@ class NewPost extends Component {
 
     handlePost = e => {
         e.preventDefault();
-        this.props.addNewPost({
+        this.props.addPost({
             title: this.state.title,
             content: this.state.content,
             name: this.state.name,
@@ -165,4 +166,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { hideNewPost })(NewPost);
+export default connect(mapStateToProps, { hideNewPost, addPost })(NewPost);
