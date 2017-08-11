@@ -13,7 +13,14 @@ class PostsList extends Component {
     renderPosts() {
         let render = [];
         this.props.posts.forEach((post, index) => {
-            render.push(<Post key={index} post={post} />);
+            render.push(
+                <Post
+                    key={index}
+                    index={index}
+                    post={post}
+                    removePost={this.props.removePost}
+                />
+            );
         });
         return render.reverse();
     }

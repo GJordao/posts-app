@@ -57,7 +57,7 @@ const styles = {
         outline: "none",
         padding: 5,
         paddingLeft: 15,
-        width: 550
+        width: 520
     },
     topBar: {
         backgroundColor: "#f2e7d5"
@@ -77,6 +77,10 @@ class Post extends Component {
             disabled: !this.state.disabled
         });
     };
+
+    removePost = () => {
+        this.props.removePost(this.props.index);
+    }
 
     render() {
         return (
@@ -98,6 +102,12 @@ class Post extends Component {
                         }
                         style={styles.icon}
                     />
+                    <img
+                        onClick={this.removePost}
+                        alt={"Remove"}
+                        src={require("./../images/ios7-close-empty.png")}
+                        style={styles.icon}
+                    />
                 </div>
                 <textarea
                     disabled={this.state.disabled}
@@ -105,8 +115,12 @@ class Post extends Component {
                     defaultValue={this.props.post.content}
                 />
                 <div style={styles.footer}>
-                    <span style={styles.footerName}>{this.props.post.name}</span>
-                    <span style={styles.footerDate}>posted at {this.props.post.date.toString()}</span>
+                    <span style={styles.footerName}>
+                        {this.props.post.name}
+                    </span>
+                    <span style={styles.footerDate}>
+                        posted at {this.props.post.date.toString()}
+                    </span>
                 </div>
             </div>
         );

@@ -21,7 +21,15 @@ class App extends Component {
     };
 
     addNewPost = post => {
-        this.state.posts.push(post);
+        let newPosts = this.state.posts.slice();
+        newPosts.push(post);
+        this.setState({ posts: newPosts });
+    };
+
+    removePost = index => {
+        let newPosts = this.state.posts.slice();
+        delete newPosts[index];
+        this.setState({ posts: newPosts });
     };
 
     render() {
@@ -33,7 +41,7 @@ class App extends Component {
                     addNewPost={this.addNewPost}
                     toggleAddPost={this.toggleAddPost}
                 />
-                <PostsList posts={this.state.posts} />
+                <PostsList posts={this.state.posts} removePost={this.removePost} />
             </div>
         );
     }
